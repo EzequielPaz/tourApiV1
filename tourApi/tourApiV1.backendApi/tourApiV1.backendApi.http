@@ -1,0 +1,6 @@
+@tourApiV1.backendApi_HostAddress = http://localhost:5007
+
+GET {{tourApiV1.backendApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
