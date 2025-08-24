@@ -1,0 +1,32 @@
+# Archivos de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos de build
+bin/
+obj/
+Debug/
+Release/
+
+# Rider/Resharper
+*.ReSharper.*
+*.DotSettings.user
+
+# Otros temporales
+*.log
+*.tmp
+*.bak
+
+# Paquetes NuGet
+*.nupkg
+packages/
+
+# Archivos de cobertura de pruebas
+*.coverage
+*.coveragexml
+
+# Configuración local de Visual Studio
+.vscode/
