@@ -21,11 +21,11 @@ namespace tourApiV1.Infrastructure.Repository
             return await _collection.Find(_ => true).ToListAsync();
         }
 
-        public async Task<Tour> GetByIdAsync(string id)
-        {
-            var filter = Builders<Tour>.Filter.Eq("Id", id);
-            return await _collection.Find(filter).FirstOrDefaultAsync();
-        }
+        //public async Task<Tour> GetByIdAsync(string id)
+        //{
+        //    var filter = Builders<Tour>.Filter.Eq("Id", id);
+        //    return await _collection.Find(filter).FirstOrDefaultAsync();
+        //}
 
         public async Task<Tour> CreateAsync(Tour tour)
         {
@@ -37,11 +37,22 @@ namespace tourApiV1.Infrastructure.Repository
             return tour;
         }
 
-        public async Task UpdateAsync(string id, Tour tour)
+        public async Task UpdateAsync(Tour tour)
         {
-            var filter = Builders<Tour>.Filter.Eq("Id", id);
+            var filter = Builders<Tour>.Filter.Eq(t => t.Id, tour.Id);
             await _collection.ReplaceOneAsync(filter, tour);
         }
+
+        public async Task<Tour> GetByIdAsync(string id)
+        {
+            var filter = Builders<Tour>.Filter.Eq(t => t.Id, id);
+            return await _collection.Find(filter).FirstOrDefaultAsync();
+        }
+
+
+
+
+
 
         public async Task DeleteAsync(string id)
         {

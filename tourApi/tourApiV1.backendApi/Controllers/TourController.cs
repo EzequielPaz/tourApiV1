@@ -43,6 +43,48 @@ namespace tourApiV1.backendApi.Controllers
             }
         }
 
+        // GET /api/Tour/{id} -> trae los datos del tour
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTour(string id, [FromBody] UpdateTourPayloadDTO payload)
+        {
+            var request = new UpdateTourRequestDTO
+            {
+                Id = id,
+                Name = payload.Name,
+                Description = payload.Description,
+                Destination = payload.Destination,
+                Price = payload.Price,
+                DurationDays = payload.DurationDays,
+                AvailableSeats = payload.AvailableSeats,
+                StartTime = payload.StartTime
+            };
+
+            var updatedTour = await _tourService.UpdateTourAsync(request);
+            if (updatedTour == null)
+                return NotFound();
+
+            return Ok(updatedTour); // ← Aquí devolvés el DTO con el Id incluido
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTour(string id)
+        {
+            var deleted = await _tourService.DeleteTourAsync(id);
+            if (!deleted)
+                return NotFound();
+
+            return NoContent(); // 204 sin contenido
+        }
+
+
+
+
+
+
+
+
+
         // Ejemplo de GET por I
 
     }

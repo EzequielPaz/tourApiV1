@@ -12,7 +12,11 @@ namespace tourApiV1.Infrastructure.Interfaces
         Task<List<Tour>> GetAllAsync();
         Task<Tour> GetByIdAsync(string id);
         Task<Tour> CreateAsync(Tour tour);
-        Task UpdateAsync(string id, Tour tour);
+        Task UpdateAsync(Tour tour);
         Task DeleteAsync(string id);
+
+        //Task<Tour> GetByIdAsync(int id);
+        //Task<Tour> GetByIdAsync(tourApiV1.Application.DTOs.Request.UpdateTourRequestDTO request);
+        //Task<Tour> GetByIdAsync(tourApiV1.Application.DTOs.Request.UpdateTourRequestDTO request);
     }
 }

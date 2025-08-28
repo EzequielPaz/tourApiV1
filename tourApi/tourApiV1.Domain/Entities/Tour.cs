@@ -42,5 +42,8 @@ namespace tourApiV1.Domain.Entities
         [BsonElement("availableSeats")]
         public int AvailableSeats { get; set; }
 
+        public DateTime UpdatedAt { get; set; }
+
+
     }
 }
